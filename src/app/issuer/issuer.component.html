@@ -1,0 +1,78 @@
+<div class="issuer-form">
+  <form [formGroup]="issuerForm" (ngSubmit)="onSubmit()">
+    <mat-card>
+      <mat-card-title>Create Credential Template</mat-card-title>
+      <mat-form-field>
+        <mat-label>Template Name</mat-label>
+        <input matInput formControlName="templateName">
+      </mat-form-field>
+
+      <div formArrayName="credentialClaims">
+        <div *ngFor="let claim of credentialClaims.controls; let i = index" [formGroupName]="i">
+          <mat-card>
+            <mat-card-title>Claim {{i + 1}}</mat-card-title>
+            <mat-form-field>
+              <mat-label>Claim Name</mat-label>
+              <input matInput formControlName="name">
+            </mat-form-field>
+            <div formArrayName="localizedClaimNames">
+              <div *ngFor="let locName of getLocalizedClaimNames(claim).controls; let j = index" [formGroupName]="j">
+                <mat-form-field>
+                  <mat-label>Localized Claim Name</mat-label>
+                  <input matInput formControlName="name">
+                </mat-form-field>
+                <mat-form-field>
+                  <mat-label>Locale</mat-label>
+                  <input matInput formControlName="locale">
+                </mat-form-field>
+              </div>
+              <button mat-button type="button" (click)="addLocalizedClaimName(i)">Add Localized Claim Name</button>
+            </div>
+            <mat-checkbox formControlName="selectivelyDisclosed">Selectively Disclosed</mat-checkbox>
+            <div formGroupName="schema">
+              <mat-form-field>
+                <mat-label>Schema Type</mat-label>
+                <input matInput formControlName="type">
+              </mat-form-field>
+            </div>
+          </mat-card>
+        </div>
+        <button mat-button type="button" (click)="addClaim()">Add Claim</button>
+      </div>
+
+      <div formGroupName="visualRepresentation">
+        <mat-card>
+          <mat-card-title>Visual Representation</mat-card-title>
+          <mat-form-field>
+            <mat-label>Visual Name</mat-label>
+            <input matInput formControlName="name">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Locale</mat-label>
+            <input matInput formControlName="locale">
+          </mat-form-field>
+          <div formGroupName="logo">
+            <mat-form-field>
+              <mat-label>Logo URI</mat-label>
+              <input matInput formControlName="uri">
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Logo Alt Text</mat-label>
+              <input matInput formControlName="altText">
+            </mat-form-field>
+          </div>
+          <mat-form-field>
+            <mat-label>Background Color</mat-label>
+            <input matInput formControlName="backgroundColor">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Text Color</mat-label>
+            <input matInput formControlName="textColor">
+          </mat-form-field>
+        </mat-card>
+      </div>
+
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+    </mat-card>
+  </form>
+</div>

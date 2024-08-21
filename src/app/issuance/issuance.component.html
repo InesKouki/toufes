@@ -1,0 +1,61 @@
+<div class="issuance-form" style="padding: 20px;">
+    <form [formGroup]="issuanceForm" (ngSubmit)="onSubmit()">
+      <mat-card>
+        <mat-card-title>Create Issuance Session</mat-card-title>
+        <mat-card-content>
+          <mat-form-field appearance="fill" style="width: 100%;">
+            <mat-label>Template Name</mat-label>
+            <mat-select formControlName="templateName">
+              <mat-option *ngFor="let template of templates" [value]="template">
+                {{ template }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="fill" style="width: 100%;">
+            <mat-label>External User ID</mat-label>
+            <input matInput formControlName="externalUserId">
+          </mat-form-field>
+          <div formArrayName="subjectClaims">
+            <div *ngFor="let claim of subjectClaims.controls; let i = index" [formGroupName]="i" style="display: flex; align-items: center; margin-bottom: 10px;">
+              <mat-form-field appearance="fill" style="flex: 1; margin-right: 10px;">
+                <mat-label>Claim Key</mat-label>
+                <input matInput formControlName="key">
+              </mat-form-field>
+              <mat-form-field appearance="fill" style="flex: 1; margin-right: 10px;">
+                <mat-label>Claim Value</mat-label>
+                <input matInput formControlName="value">
+              </mat-form-field>
+              <button mat-icon-button color="warn" (click)="removeClaim(i)">
+                <mat-icon>remove_circle</mat-icon>
+              </button>
+            </div>
+            <button mat-button type="button" (click)="addClaim()" style="margin-top: 10px;">
+              Add Claim
+            </button>
+          </div>
+          <mat-form-field appearance="fill" style="width: 100%;">
+            <mat-label>Valid From</mat-label>
+            <input matInput formControlName="validFrom" readonly>
+          </mat-form-field>
+          <mat-form-field appearance="fill" style="width: 100%;">
+            <mat-label>Valid Until</mat-label>
+            <input matInput formControlName="validUntil" readonly>
+          </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" type="submit">Submit</button>
+        </mat-card-actions>
+      </mat-card>
+    </form>
+  
+    <div *ngIf="qrCodeDataUrl">
+      <mat-card>
+        <mat-card-title>Scan QR Code</mat-card-title>
+        <mat-card-content>
+          <img [src]="qrCodeDataUrl" alt="QR Code">
+          <p>One-Time Password: {{ oneTimePassword }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  

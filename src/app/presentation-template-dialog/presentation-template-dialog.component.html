@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>Presentation Template</h1>
+<div mat-dialog-content>
+  <p><strong>Template ID:</strong> {{ data.presentationTemplateId }}</p>
+  <p><strong>Template Name:</strong> {{ data.presentationTemplateName }}</p>
+  <p><strong>Callback URL:</strong> {{ data.callBackUrl }}</p>
+  <h3>Presentation Requirements:</h3>
+  <ul>
+    <li *ngFor="let criteria of data.presentationRequirements.credentialCriteria">
+      <p><strong>Required Type:</strong> {{ criteria.requiredType }}</p>
+      <p><strong>Allowed Issuers:</strong> {{ criteria.allowedIssuers.join(', ') }}</p>
+      <p><strong>Required Claims:</strong></p>
+      <ul>
+        <li *ngFor="let claim of criteria.requiredClaims">
+          <p><strong>Claim Name:</strong> {{ claim.claimName }}</p>
+          <p><strong>Value:</strong> {{ claim.value }}</p>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="closeDialog()">Close</button>
+</div>
