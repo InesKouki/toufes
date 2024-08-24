@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators, AbstractControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-issuer',
@@ -80,7 +81,7 @@ export class IssuerComponent {
         credentialClaims: formValue.credentialClaims,
         visualRepresentations: [formValue.visualRepresentation] // Wrap in an array
       };
-      this.http.post('http://192.168.33.10:8088/api/v1/credential-templates', payload)
+      this.http.post(`${environment.baseUrl}/credential-templates`, payload)
         .subscribe({
           next: (response) => this.snackBar.open('Success', 'Close', {
             duration: 3000,

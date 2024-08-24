@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class IssuerService {
-  private baseUrl = 'http://192.168.33.10:8088/api/v1';
+  private baseUrl = environment.baseUrl;
 
   constructor(private http: HttpClient) { }
 

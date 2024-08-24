@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-create-presentation-template',
@@ -64,13 +65,13 @@ export class CreatePresentationTemplateComponent implements OnInit {
         }
       };
 
-      this.http.post('http://192.168.33.10:8088/api/v1/presentation-templates', payload)
-        .subscribe({
-          next: (response) => this.snackBar.open('Presentation template created successfully', 'Close', { duration: 3000, panelClass: 'success-snackbar' }),
-          error: (error) => this.snackBar.open('Failed to create presentation template', 'Close', { duration: 3000, panelClass: 'error-snackbar' })
-        });
+      this.http.post(`${environment.baseUrl}/presentation-templates`, payload)
+      .subscribe({
+        next: (response) => this.snackBar.open('Presentation template created successfully', 'Close', { duration: 3000, panelClass: 'success-snackbar' }),
+        error: (error) => this.snackBar.open('Failed to create presentation template', 'Close', { duration: 3000, panelClass: 'error-snackbar' })
+      });
     } else {
       this.snackBar.open('Form is invalid', 'Close', { duration: 3000, panelClass: 'error-snackbar' });
     }
-  }
+  }   
 }
