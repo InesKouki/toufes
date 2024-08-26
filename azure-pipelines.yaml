@@ -1,0 +1,38 @@
+pool:
+  name: 'Default'
+  demands:
+    - agent.name -equals INES
+
+variables:
+  dockerHubServiceConnection: 'docker'  # Your DockerHub service connection
+  frontendImageName: 'ineskouki/frontend'  # Frontend Docker image name
+
+resources:
+  repositories:
+    - repository: frontend_repo
+      type: git
+      name: PFE/connector-frontend-demo
+
+stages:
+  # Stage 1: Build and Push Frontend (Angular)
+  - stage: Build_And_Push_Frontend
+    jobs:
+    - job: buildAndPushFrontend
+      displayName: 'Build and Push Frontend Docker Image'
+      steps:
+      # Step 1: Checkout Frontend Code
+      - checkout: frontend_repo
+        displayName: 'Checkout Frontend Repository'
+
+      # Step 2: Build and Push Frontend Docker Image
+      - task: Docker@2
+        inputs:
+          containerRegistry: $(dockerHubServiceConnection)
+          repository: $(frontendImageName)
+          command: buildAndPush
+          Dockerfile: 'Dockerfile'
+          buildContext: '$(Build.SourcesDirectory)'
+          tags: |
+            latest
+            $(Build.BuildId)
+        displayName: 'Build and Push Frontend Docker Image'
