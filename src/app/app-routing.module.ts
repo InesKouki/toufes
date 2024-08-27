@@ -10,7 +10,6 @@ import { CreatePresentationSessionComponent } from './create-presentation-sessio
 
 const routes: Routes = [
   { path: 'issuer', component: IssuerComponent },
-  { path: 'verifier', component: VerifierComponent },
   { path: 'issuance', component: IssuanceComponent },
   { path: 'create-presentation-template', component: CreatePresentationTemplateComponent },
   { path: 'manage-presentation-templates', component: ManagePresentationTemplatesComponent },
