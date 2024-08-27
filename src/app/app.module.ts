@@ -6,7 +6,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IssuerComponent } from './create-credential-template/create-credential-template.component';
-import { NavigationComponent } from './navigation/navigation.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
@@ -20,6 +19,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { IssuanceComponent } from './create-issuance-session/issuance.component';
 import { ManageCredentialTemplatesComponent } from './manage-credential-templates/manage-credential-templates.component';
@@ -30,13 +31,13 @@ import { PresentationTemplateDialogComponent } from './presentation-template-dia
 import { CreatePresentationSessionComponent } from './create-presentation-session/create-presentation-session.component';
 import { QrDialogComponent } from './qr-dialog/qr-dialog.component';
 import { QrDialogPresentationComponent } from './qr-dialog-presentation/qr-dialog-presentation.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     IssuerComponent,
-    NavigationComponent,
     IssuanceComponent,
     ManageCredentialTemplatesComponent,
     CredentialTemplateDialogComponent,
@@ -45,7 +46,8 @@ import { QrDialogPresentationComponent } from './qr-dialog-presentation/qr-dialo
     PresentationTemplateDialogComponent,
     CreatePresentationSessionComponent,
     QrDialogComponent,
-    QrDialogPresentationComponent
+    QrDialogPresentationComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -54,11 +56,13 @@ import { QrDialogPresentationComponent } from './qr-dialog-presentation/qr-dialo
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
+    MatMenuModule,
     MatSidenavModule,
     MatListModule,
     MatCardModule,
     MatInputModule,
     MatFormFieldModule,
+    MatExpansionModule,
     MatTableModule,
     MatListModule,
     MatDialogModule,

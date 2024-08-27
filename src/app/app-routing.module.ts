@@ -6,15 +6,16 @@ import { ManageCredentialTemplatesComponent } from './manage-credential-template
 import { CreatePresentationTemplateComponent } from './create-presentation-template/create-presentation-template.component';
 import { ManagePresentationTemplatesComponent } from './manage-presentation-templates/manage-presentation-templates.component';
 import { CreatePresentationSessionComponent } from './create-presentation-session/create-presentation-session.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
+  { path: '', component: HomeComponent },
   { path: 'credential', component: IssuerComponent },
   { path: 'issuance', component: IssuanceComponent },
   { path: 'presentation', component: CreatePresentationTemplateComponent },
   { path: 'presentations', component: ManagePresentationTemplatesComponent },
   { path: 'credentials', component: ManageCredentialTemplatesComponent },
   { path: 'verification', component: CreatePresentationSessionComponent },
-  { path: '', redirectTo: '/issuer', pathMatch: 'full' }
 ];
 
 @NgModule({
