@@ -19,24 +19,20 @@ trigger:
       - master  # Trigger pipeline on changes to master branch
 
 stages:
-  # Stage 1: Checkout and Install Node.js
   - stage: Checkout_And_Install_Node
     displayName: 'Checkout Frontend Code and Install Node.js'
     jobs:
     - job: CheckoutAndInstallNode
       displayName: 'Checkout Frontend Code and Install Node.js'
       steps:
-      # Step 1: Checkout Frontend Code
       - checkout: frontend_repo
         displayName: 'Checkout Frontend Repository'
 
-      # Step 2: Install Node.js (version 20.x)
       - task: NodeTool@0
         inputs:
           versionSpec: '20.x'
         displayName: 'Install Node.js (20.x)'
 
-  # Stage 2: npm Install and Build
   - stage: NPM_Install_And_Build
     displayName: 'Install npm Packages and Build Angular Project'
     dependsOn: Checkout_And_Install_Node
@@ -44,14 +40,12 @@ stages:
     - job: NpmInstallAndBuild
       displayName: 'npm Install and Build Angular Project'
       steps:
-      # Step 3: Install npm packages and build Angular project with Angular CLI version 15
       - script: |
           npm install -g @angular/cli@15
           npm install
           ng build --prod
         displayName: 'npm install and build with Angular CLI v15'
 
-  # Stage 3: Build and Push Docker Image
   - stage: Build_And_Push_Docker_Image
     displayName: 'Build and Push Frontend Docker Image'
     dependsOn: NPM_Install_And_Build
@@ -59,7 +53,6 @@ stages:
     - job: BuildAndPushDocker
       displayName: 'Build and Push Frontend Docker Image'
       steps:
-      # Step 4: Build and Push Frontend Docker Image
       - task: Docker@2
         inputs:
           containerRegistry: $(dockerHubServiceConnection)
@@ -69,5 +62,4 @@ stages:
           buildContext: '$(Build.SourcesDirectory)'
           tags: |
             latest
-            $(Build.BuildId)
         displayName: 'Build and Push Frontend Docker Image'
