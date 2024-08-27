@@ -1,0 +1,65 @@
+/* General container styling */
+.presentation-session-form {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Card styling */
+mat-card {
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Use shadow instead of border */
+    border: none; /* Remove the border to prevent double border effect */
+}
+
+/* Card title styling */
+mat-card-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2c3e50; /* Dark grey for a modern look */
+    margin-bottom: 20px;
+    text-align: center;
+    border-bottom: 1px solid #bdc3c7; /* Subtle underline */
+    padding-bottom: 10px;
+}
+
+/* Full-width form field */
+.full-width {
+    width: 100%;
+}
+
+/* QR Code card styling */
+.qr-card {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Use shadow instead of border */
+    border: none; /* Remove the border */
+    text-align: center;
+}
+
+.qr-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.qr-code-img {
+    max-width: 200px;
+    margin: 10px 0;
+    border-radius: 8px;
+    /* Removed the border from the image to prevent double border effect */
+}
+
+/* Card actions styling */
+mat-card-actions {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}

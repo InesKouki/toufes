@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { IssuerComponent } from './issuer.component';
+import { IssuerComponent } from './create-credential-template.component';
 
 describe('IssuerComponent', () => {
   let component: IssuerComponent;

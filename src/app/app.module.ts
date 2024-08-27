@@ -5,8 +5,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { IssuerComponent } from './issuer/issuer.component';
-import { VerifierComponent } from './verifier/verifier.component';
+import { IssuerComponent } from './create-credential-template/create-credential-template.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTableModule } from '@angular/material/table';
@@ -22,20 +21,21 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { IssuanceComponent } from './issuance/issuance.component';
+import { IssuanceComponent } from './create-issuance-session/issuance.component';
 import { ManageCredentialTemplatesComponent } from './manage-credential-templates/manage-credential-templates.component';
 import { CredentialTemplateDialogComponent } from './credential-template-dialog/credential-template-dialog.component';
 import { CreatePresentationTemplateComponent } from './create-presentation-template/create-presentation-template.component';
 import { ManagePresentationTemplatesComponent } from './manage-presentation-templates/manage-presentation-templates.component';
 import { PresentationTemplateDialogComponent } from './presentation-template-dialog/presentation-template-dialog.component';
 import { CreatePresentationSessionComponent } from './create-presentation-session/create-presentation-session.component';
+import { QrDialogComponent } from './qr-dialog/qr-dialog.component';
+import { QrDialogPresentationComponent } from './qr-dialog-presentation/qr-dialog-presentation.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     IssuerComponent,
-    VerifierComponent,
     NavigationComponent,
     IssuanceComponent,
     ManageCredentialTemplatesComponent,
@@ -43,7 +43,9 @@ import { CreatePresentationSessionComponent } from './create-presentation-sessio
     CreatePresentationTemplateComponent,
     ManagePresentationTemplatesComponent,
     PresentationTemplateDialogComponent,
-    CreatePresentationSessionComponent
+    CreatePresentationSessionComponent,
+    QrDialogComponent,
+    QrDialogPresentationComponent
   ],
   imports: [
     BrowserModule,

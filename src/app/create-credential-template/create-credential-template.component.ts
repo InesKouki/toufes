@@ -6,8 +6,8 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-issuer',
-  templateUrl: './issuer.component.html',
-  styleUrls: ['./issuer.component.css']
+  templateUrl: './create-credential-template.component.html',
+  styleUrls: ['./create-credential-template.component.css']
 })
 export class IssuerComponent {
   issuerForm: FormGroup;
@@ -60,6 +60,10 @@ export class IssuerComponent {
     this.credentialClaims.push(this.createClaim('', '', '', false, ''));
   }
 
+  removeClaim(index: number): void {
+    this.credentialClaims.removeAt(index);
+  }
+
   addLocalizedClaimName(index: number): void {
     const claim = this.credentialClaims.at(index) as FormGroup;
     const localizedClaimNames = claim.get('localizedClaimNames') as FormArray;
@@ -67,6 +71,12 @@ export class IssuerComponent {
       name: ['', Validators.required],
       locale: ['', Validators.required]
     }));
+  }
+
+  removeLocalizedClaimName(claimIndex: number, locNameIndex: number): void {
+    const claim = this.credentialClaims.at(claimIndex) as FormGroup;
+    const localizedClaimNames = claim.get('localizedClaimNames') as FormArray;
+    localizedClaimNames.removeAt(locNameIndex);
   }
 
   getLocalizedClaimNames(claim: AbstractControl): FormArray {

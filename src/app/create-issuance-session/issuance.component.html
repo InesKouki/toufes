@@ -48,14 +48,3 @@
       </mat-card>
     </form>
   
-    <div *ngIf="qrCodeDataUrl">
-      <mat-card>
-        <mat-card-title>Scan QR Code</mat-card-title>
-        <mat-card-content>
-          <img [src]="qrCodeDataUrl" alt="QR Code">
-          <p>One-Time Password: {{ oneTimePassword }}</p>
-        </mat-card-content>
-      </mat-card>
-    </div>
-  </div>
-  

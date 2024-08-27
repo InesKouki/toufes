@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VerifierComponent } from './verifier.component';
+import { QrDialogComponent } from './qr-dialog.component';
 
-describe('VerifierComponent', () => {
-  let component: VerifierComponent;
-  let fixture: ComponentFixture<VerifierComponent>;
+describe('QrDialogComponent', () => {
+  let component: QrDialogComponent;
+  let fixture: ComponentFixture<QrDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ VerifierComponent ]
+      declarations: [ QrDialogComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(VerifierComponent);
+    fixture = TestBed.createComponent(QrDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

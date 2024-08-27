@@ -4,6 +4,8 @@ import { VerifierService } from '../services/verifier.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DomSanitizer } from '@angular/platform-browser';
 import * as QRCode from 'qrcode';
+import { MatDialog } from '@angular/material/dialog';
+import { QrDialogPresentationComponent } from '../qr-dialog-presentation/qr-dialog-presentation.component'; // Update the import
 
 @Component({
   selector: 'app-create-presentation-session',
@@ -21,7 +23,8 @@ export class CreatePresentationSessionComponent implements OnInit {
     private fb: FormBuilder,
     private verifierService: VerifierService,
     private snackBar: MatSnackBar,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private dialog: MatDialog // Inject MatDialog
   ) {
     this.presentationSessionForm = this.fb.group({
       templateName: ['', Validators.required]
@@ -74,6 +77,13 @@ export class CreatePresentationSessionComponent implements OnInit {
         return;
       }
       this.qrCodeDataUrl = this.sanitizer.bypassSecurityTrustUrl(url);
+
+      // Open the QR code dialog
+      this.dialog.open(QrDialogPresentationComponent, { // Updated the dialog component name
+        data: {
+          qrCodeDataUrl: this.qrCodeDataUrl
+        }
+      });
     });
   }
 }

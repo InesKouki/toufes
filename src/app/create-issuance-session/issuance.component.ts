@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';  // Import MatDialog
 import { IssuerService } from '../services/issuer.service';
 import * as QRCode from 'qrcode';
 import { ActivatedRoute } from '@angular/router';
+import { QrDialogComponent } from '../qr-dialog/qr-dialog.component'; // Import your new dialog component
 
 @Component({
   selector: 'app-issuance',
@@ -20,7 +22,8 @@ export class IssuanceComponent implements OnInit {
     private fb: FormBuilder,
     private snackBar: MatSnackBar,
     private issuerService: IssuerService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private dialog: MatDialog  // Inject MatDialog
   ) {
     this.issuanceForm = this.fb.group({
       templateName: ['', Validators.required],
@@ -111,6 +114,15 @@ export class IssuanceComponent implements OnInit {
             }
             this.qrCodeDataUrl = url;
             this.oneTimePassword = response.credentialOfferDetails.oneTimePassword;
+
+            // Open the QR code dialog
+            this.dialog.open(QrDialogComponent, {
+              data: {
+                qrCodeDataUrl: this.qrCodeDataUrl,
+                oneTimePassword: this.oneTimePassword
+              }
+            });
+
             this.snackBar.open('Issuance session created', 'Close', { duration: 3000, panelClass: 'success-snackbar' });
           });
         },
