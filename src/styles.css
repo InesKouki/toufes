@@ -1,3 +1,6 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 body {
@@ -12,12 +15,11 @@ mat-toolbar {
 }
 
 .success-snackbar {
-    background-color: #4caf50 !important; /* Green for success */
-    color: #fff !important;
-  }
-  
-  .error-snackbar {
-    background-color: #f44336 !important; /* Red for error */
-    color: #fff !important;
-  }
-  
+  background-color: #4caf50 !important; /* Green for success */
+  color: #fff !important;
+}
+
+.error-snackbar {
+  background-color: #f44336 !important; /* Red for error */
+  color: #fff !important;
+}

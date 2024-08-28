@@ -1,36 +1,48 @@
 <header>
-    <div class="header-container">
-      <div class="left-header">
-        <button mat-button routerLink="/">Home</button>
-  
-        <div class="dropdowns">
-          <mat-menu #verifierMenu="matMenu">
-            <button mat-menu-item routerLink="/presentation">Create Presentation Template</button>
-            <button mat-menu-item routerLink="/verification">Create Presentation Session</button>
-            <button mat-menu-item routerLink="/presentations">Manage Presentations</button>
-          </mat-menu>
-    
-          <button mat-button [matMenuTriggerFor]="verifierMenu">Verifier</button>
-    
-          <mat-menu #issuerMenu="matMenu">
-            <button mat-menu-item routerLink="/credential">Credential Templates</button>
-            <button mat-menu-item routerLink="/issuance">Issuance Session</button>
-            <button mat-menu-item routerLink="/credentials">Manage Issuances</button>
-          </mat-menu>
-    
-          <button mat-button [matMenuTriggerFor]="issuerMenu">Issuer</button>
-        </div>
+  <div class="header-container !px-24">
+    <div class="left-header">
+      <button mat-button routerLink="/">Home</button>
+
+      <div class="dropdowns">
+        <mat-menu #verifierMenu="matMenu">
+          <button mat-menu-item routerLink="/presentation">
+            Create Presentation Template
+          </button>
+          <button mat-menu-item routerLink="/verification">
+            Create Presentation Session
+          </button>
+          <button mat-menu-item routerLink="/presentations">
+            Manage Presentations
+          </button>
+        </mat-menu>
+
+        <button mat-button [matMenuTriggerFor]="verifierMenu">Verifier</button>
+
+        <mat-menu #issuerMenu="matMenu">
+          <button mat-menu-item routerLink="/credential">
+            Credential Templates
+          </button>
+          <button mat-menu-item routerLink="/issuance">Issuance Session</button>
+          <button mat-menu-item routerLink="/credentials">
+            Manage Issuances
+          </button>
+        </mat-menu>
+
+        <button class="ml-6" mat-button [matMenuTriggerFor]="issuerMenu">
+          Issuer
+        </button>
       </div>
-      
-      <h1 class="header-title">Welcome to Lissi Demo</h1>
     </div>
-  </header>
-  
-  <main>
-    <router-outlet></router-outlet> <!-- This will load the routed components -->
-  </main>
-  
-  <footer>
-    <p class="footer-text">© 2024 LissiFront. All rights reserved.</p>
-  </footer>
-  
+
+    <h1 class="header-title">Welcome to Lissi Demo</h1>
+  </div>
+</header>
+
+<main>
+  <router-outlet></router-outlet>
+  <!-- This will load the routed components -->
+</main>
+
+<footer>
+  <p class="footer-text">© 2024 LissiFront. All rights reserved.</p>
+</footer>

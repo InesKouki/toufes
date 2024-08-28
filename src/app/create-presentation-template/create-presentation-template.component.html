@@ -1,38 +1,67 @@
-<div class="presentation-template-form">
+<div class="issuer-form !mx-28 !max-w-full" style="margin: 48px auto">
   <form [formGroup]="presentationTemplateForm" (ngSubmit)="onSubmit()">
-      <mat-card>
-          <mat-card-title>Create Presentation Template</mat-card-title>
-          <mat-card-content>
-              <mat-form-field appearance="fill" class="full-width">
-                  <mat-label>Presentation Template Name</mat-label>
-                  <input matInput formControlName="presentationTemplateName">
+    <mat-card class="!bg-transparent !border-none !shadow-none !w-full">
+      <mat-card-title class="!text-start !font-medium !text-xl"
+        >Create Presentation Template</mat-card-title
+      >
+      <mat-card-content class="!mx-0 !px-0">
+        <mat-form-field appearance="fill" class="full-width mb-4">
+          <mat-label>Presentation Template Name</mat-label>
+          <input matInput formControlName="presentationTemplateName" />
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="full-width mb-4">
+          <mat-label>Required Type</mat-label>
+          <input matInput formControlName="requiredType" />
+        </mat-form-field>
+        <div formArrayName="requiredClaims">
+          <div
+            *ngFor="let claim of requiredClaims.controls; let i = index"
+            [formGroupName]="i"
+            class="claim-row"
+          >
+            <div class="flex flex-1 items-start justify-center gap-x-4">
+              <mat-form-field class="!my-0" appearance="fill" style="flex: 1">
+                <mat-label>Claim Name</mat-label>
+                <input class="!my-0" matInput formControlName="claimName" />
               </mat-form-field>
-              <mat-form-field appearance="fill" class="full-width">
-                  <mat-label>Required Type</mat-label>
-                  <input matInput formControlName="requiredType">
+              <mat-form-field style="flex: 1" class="!my-0" appearance="fill">
+                <mat-label>Claim Value</mat-label>
+                <input class="!my-0" matInput formControlName="value" />
               </mat-form-field>
-              <div formArrayName="requiredClaims">
-                  <div *ngFor="let claim of requiredClaims.controls; let i = index" [formGroupName]="i" class="claim-row">
-                      <mat-form-field appearance="fill" class="half-width">
-                          <mat-label>Claim Name</mat-label>
-                          <input matInput formControlName="claimName">
-                      </mat-form-field>
-                      <mat-form-field appearance="fill" class="half-width">
-                          <mat-label>Claim Value</mat-label>
-                          <input matInput formControlName="value">
-                      </mat-form-field>
-                      <button mat-icon-button color="warn" (click)="removeClaim(i)">
-                          <mat-icon>remove_circle</mat-icon>
-                      </button>
-                  </div>
-                  <button mat-button type="button" (click)="addClaim()" class="add-claim-btn">
-                      Add Claim
-                  </button>
-              </div>
-          </mat-card-content>
-          <mat-card-actions class="card-actions">
-              <button mat-raised-button color="primary" type="submit">Submit</button>
-          </mat-card-actions>
-      </mat-card>
+              <button
+                mat-button
+                type="button"
+                (click)="removeClaim(i)"
+                style="margin-top: 10px"
+              >
+                Remove Claim
+              </button>
+            </div>
+          </div>
+          <div class="w-full flex items-center justify-end">
+            <button
+              mat-button
+              type="button"
+              (click)="addClaim()"
+              style="margin-top: 10px"
+            >
+              Add Claim
+            </button>
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-card-actions class="card-actions">
+        <div class="w-full flex items-center justify-end">
+          <button
+            class="!w-[calc(33%-4px)]"
+            mat-raised-button
+            color="primary"
+            type="submit"
+          >
+            Submit
+          </button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
   </form>
 </div>
